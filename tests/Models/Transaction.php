@@ -87,5 +87,12 @@ class Transaction extends Model implements Stateful
         return true;
     }
 
+    protected function beforeProcess() {
+        //dd("doing something before entering processing state");
+    }
+
+    protected function afterProcess() {
+        //dd("doing something after leaving processing state");
+    }
 
 }
