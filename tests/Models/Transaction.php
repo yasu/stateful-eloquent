@@ -47,4 +47,45 @@ class Transaction extends Model implements Stateful
         ]
     ];
 
+    /**
+     * @return bool
+     */
+    protected function validateProcess()
+    {
+        $validate = true;
+        if (!$validate) {
+            $this->addValidateProcessMessage();
+        }
+
+        return $validate;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function validateActivate()
+    {
+        //dd("validateActivate");
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function validateFail()
+    {
+        //dd("validateFail");
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function validateClose()
+    {
+        //dd("validateClose");
+        return true;
+    }
+
+
 }

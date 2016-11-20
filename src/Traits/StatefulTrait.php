@@ -23,7 +23,7 @@ trait StatefulTrait
 
     /**
      * Get error messages.
-     * 
+     *
      * @return MessageBag
      */
     public function errors()
@@ -132,7 +132,7 @@ trait StatefulTrait
     protected function executeHook($transition,$hook)
     {
         if (method_exists($this, $method = $hook . studly_case($transition))) {
-            $this->{$method};
+            $this->{$method}();
         }
     }
 
