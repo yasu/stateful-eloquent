@@ -2,11 +2,11 @@
 
 namespace Acacha\Stateful\Tests\Models;
 
-use Acacha\Stateful\StatefulTrait;
-use Acacha\Stateful\StatefulInterface;
+use Acacha\Stateful\Traits\StatefulTrait;
+use Acacha\Stateful\Contracts\Stateful;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model implements StatefulInterface
+class Transaction extends Model implements Stateful
 {
     use StatefulTrait;
 

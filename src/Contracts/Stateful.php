@@ -1,11 +1,11 @@
 <?php
 
-namespace Acacha\Stateful;
+namespace Acacha\Stateful\Contracts;
 
 /**
- * Interface StatefulInterface
+ * Interface Stateful
  */
-interface StatefulInterface
+interface Stateful
 {
     public function getInitialState();
 

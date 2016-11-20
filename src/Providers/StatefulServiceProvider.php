@@ -1,9 +1,15 @@
 <?php
 
-namespace Acacha\Stateful;
+namespace Acacha\Stateful\Providers;
 
+use Acacha\Stateful\Contracts\Stateful;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class StatefulServiceProvider.
+ * 
+ * @package Acacha\Stateful\Providers
+ */
 class StatefulServiceProvider extends ServiceProvider
 {
     /**
@@ -24,7 +30,7 @@ class StatefulServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['events']->listen('eloquent.creating*', function ($model) {
-            if ($model instanceof StatefulInterface) {
+            if ($model instanceof Stateful) {
                 $model->setInitialState();
             }
         });
