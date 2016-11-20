@@ -22,6 +22,16 @@ trait StatefulTrait
     protected $errorMessages;
 
     /**
+     * Get error messages.
+     * 
+     * @return MessageBag
+     */
+    public function errors()
+    {
+        return $this->errorMessages;
+    }
+
+    /**
      * StatefulTrait constructor.
      * @param MessageBag $errorMessages
      */
@@ -137,10 +147,11 @@ trait StatefulTrait
         $from = $this->transitions[$transition]['from'];
         $currentState = $this->{$this->getStateColumn()};
 
-
         if(method_exists($this, $method = 'validate' . studly_case($transition) ))
         {
-            if ($this->{$method} === false ) return false;
+            if ($this->{$method}() === false ) {
+                return false;
+            }
         }
 
         return $this->checkTransitionBetweenStatesIsAllowed($from, $currentState);
