@@ -2,6 +2,7 @@
 
 namespace Acacha\Stateful\Traits;
 use Acacha\Stateful\Events\Registered;
+use Acacha\Stateful\Events\Transitioned;
 use Acacha\Stateful\Exceptions\IllegalStateTransitionException;
 use Illuminate\Support\MessageBag;
 
@@ -19,6 +20,17 @@ trait StatefulTrait
      * @var MessageBag
      */
     protected $errorMessages;
+
+    /**
+     * StatefulTrait constructor.
+     * @param MessageBag $errorMessages
+     */
+    public function __construct()
+    {
+        $this->errorMessages = new MessageBag();
+        parent::__construct();
+    }
+
 
     /**
      * Overload methods.
@@ -64,7 +76,7 @@ trait StatefulTrait
             $this->executeBeforeTransitionHook($transition);
             $result = $this->updateState($to);
             $this->executeAfterTransitionHook($transition);
-            event(new Registered($this,$this->{$this->getStateColumn()},$to));
+            event(new Transitioned($this,$this->{$this->getStateColumn()},$to));
             return $result;
         }
         throw new IllegalStateTransitionException($this->errorMessages);
@@ -120,7 +132,7 @@ trait StatefulTrait
      * @param  string $transition
      * @return boolean
      */
-    private function canPerformTransition($transition)
+    protected function canPerformTransition($transition)
     {
         $from = $this->transitions[$transition]['from'];
         $currentState = $this->{$this->getStateColumn()};
@@ -139,17 +151,20 @@ trait StatefulTrait
      * @param $currentState
      * @return bool
      */
-    private function checkTransitionBetweenStatesIsAllowed($from, $currentState)
+    protected function checkTransitionBetweenStatesIsAllowed($from, $currentState)
     {
         $result = is_array($from) ? in_array($currentState, $from) : $currentState === $from;
         if ($result === false) {
-            $this->errorMessages->add(
+            $this->addErrorMessage(
                 'transitionNotDefined',
                 'There is no transition defined between states ' . $from . ' and ' . $currentState);
         }
         return $result;
     }
 
+    protected function addErrorMessage($name,$message) {
+        $this->errorMessages->add($name,$message);
+    }
 
     /**
      * Set the initial state.

@@ -9,7 +9,7 @@ use Acacha\Stateful\Contracts\Stateful;
  * 
  * @package Acacha\Stateful\Events
  */
-class Registered
+class Transitioned
 {
 
     /**
