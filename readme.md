@@ -2,18 +2,22 @@
 
 If you're familiar with my [AASM](https://github.com/aasm/aasm), then this is a similar take – just implemented in Laravel 5 for Eloquent classes.
 
+## References
+
+Forked from https://github.com/mikerice/stateful-eloquent
+
 ## Installation
 
 ### Step 1: Install Through Composer
 
 ```
-composer require mikerice/stateful-eloquent
+composer require acacha/stateful-eloquent
 ```
 
 ### Step 2: Add the Service Provider
 
 ```php
-MikeRice\Stateful\StatefulServiceProvider::class,
+Acacha\Stateful\StatefulServiceProvider::class,
 ```
 
 ### Step 3: Update your Eloquent Model
@@ -21,8 +25,8 @@ MikeRice\Stateful\StatefulServiceProvider::class,
 Your models should use the Stateful trait and interface
 
 ```php
-use MikeRice\Stateful\StatefulTrait;
-use MikeRice\Stateful\StatefulInterface;
+use Acacha\Stateful\StatefulTrait;
+use Acache\Stateful\StatefulInterface;
 
 class Transaction extends Model implements StatefulInterface
 {
@@ -86,3 +90,4 @@ $transaction->process();
 
 $transaction->isProcessing();
 ```
+

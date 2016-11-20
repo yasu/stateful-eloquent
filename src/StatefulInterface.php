@@ -1,6 +1,6 @@
 <?php
 
-namespace MikeRice\Stateful;
+namespace Acacha\Stateful;
 
 /**
  * Interface StatefulInterface

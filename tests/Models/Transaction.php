@@ -1,9 +1,9 @@
 <?php
 
-namespace MikeRice\Stateful\Tests\Models;
+namespace Acacha\Stateful\Tests\Models;
 
-use MikeRice\Stateful\StatefulTrait;
-use MikeRice\Stateful\StatefulInterface;
+use Acacha\Stateful\StatefulTrait;
+use Acacha\Stateful\StatefulInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model implements StatefulInterface

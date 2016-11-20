@@ -1,15 +1,20 @@
 <?php
 
-namespace MikeRice\Stateful;
+namespace Acacha\Stateful;
 
+/**
+ * Class StatefulTrait.
+ *
+ * @package Acacha\Stateful
+ */
 trait StatefulTrait
 {
     /**
      * Overload methods.
-     *
-     * @param  str $method
-     * @param  arr $parameters
-     * @return void
+     * 
+     * @param $method
+     * @param $parameters
+     * @return bool|void
      */
     public function __call($method, $parameters)
     {
@@ -24,9 +29,9 @@ trait StatefulTrait
 
     /**
      * Determine if the state of the model is the given state.
-     *
-     * @param  str  $state
-     * @return boolean
+     * 
+     * @param $state
+     * @return bool
      */
     private function isState($state)
     {
