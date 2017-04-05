@@ -17,7 +17,7 @@ composer require acacha/stateful-eloquent
 ### Step 2: Add the Service Provider
 
 ```php
-Acacha\Stateful\StatefulServiceProvider::class,
+Acacha\Stateful\Providers\StatefulServiceProvider::class,
 ```
 
 ### Step 3: Update your Eloquent Model
@@ -25,10 +25,10 @@ Acacha\Stateful\StatefulServiceProvider::class,
 Your models should use the Stateful trait and interface
 
 ```php
-use Acacha\Stateful\StatefulTrait;
-use Acache\Stateful\StatefulInterface;
+use Acacha\Stateful\Traits\StatefulTrait;
+use Acacha\Stateful\Contracts\Stateful;
 
-class Transaction extends Model implements StatefulInterface
+class Transaction extends Model implements Stateful
 {
     use StatefulTrait;
 }
@@ -135,8 +135,10 @@ protected $transitions = [
 ```php
 $transaction = new Transaction();
 
+//Execute transition
 $transaction->process();
 
-$transaction->isProcessing();
+//Check a state (return true or false)
+$transaction->active();
 ```
 
