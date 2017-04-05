@@ -130,6 +130,30 @@ protected $transitions = [
 
 ```
 
+## Database configuration
+
+You model migration should have a state field like:
+
+```php
+class CreateModelTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('model', function (Blueprint $table) {
+            $table->increments('id');
+            ...
+            $table->string('state');
+            ...
+            $table->timestamps();
+        });
+    }
+```
+
 ## Usage
 
 ```php
@@ -138,7 +162,7 @@ $transaction = new Transaction();
 //Execute transition
 $transaction->process();
 
-//Check a state (return true or false)
+//Check if a state is active (return true or false)
 $transaction->active();
 ```
 
