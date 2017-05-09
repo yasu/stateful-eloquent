@@ -33,14 +33,15 @@ trait StatefulTrait
 
     /**
      * StatefulTrait constructor.
-     * @param MessageBag $errorMessages
+     *
+     * @param  array  $attributes
+     * @return void
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
         $this->errorMessages = new MessageBag();
-        parent::__construct();
+        parent::__construct($attributes);
     }
-
 
     /**
      * Overload methods.
