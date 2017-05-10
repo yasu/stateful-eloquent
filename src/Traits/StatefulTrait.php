@@ -4,6 +4,7 @@ namespace Acacha\Stateful\Traits;
 use Acacha\Stateful\Events\Registered;
 use Acacha\Stateful\Events\Transitioned;
 use Acacha\Stateful\Exceptions\IllegalStateTransitionException;
+use Acacha\Stateful\Exceptions\NotValidStatesException;
 use Acacha\Stateful\Exceptions\NotValidTransitionsException;
 use Illuminate\Support\MessageBag;
 
@@ -56,6 +57,17 @@ trait StatefulTrait
     }
 
     /**
+     * Obtain states.
+     *
+     * @return mixed
+     */
+    public function obtainStates()
+    {
+        if ($this->states != null) return $this->states;
+        throw new NotValidStatesException('No states defined for class ' , get_class($this) );
+    }
+
+    /**
      * Overload methods.
      * 
      * @param $method
@@ -66,7 +78,7 @@ trait StatefulTrait
     {
         if (array_key_exists($method, $this->obtainTransitions())) {
             return $this->performTransition($method);
-        } elseif (array_key_exists($method, $this->states) || in_array($method, $this->states)) {
+        } elseif (array_key_exists($method, $this->obtainStates()) || in_array($method, $this->obtainStates())) {
             return $this->isState($method);
         }
 
@@ -207,7 +219,7 @@ trait StatefulTrait
      */
     public function getInitialState()
     {
-        foreach ($this->states as $state => $value) {
+        foreach ($this->obtainStates() as $state => $value) {
             if ($value['inital']) {
                return $state;
             }
