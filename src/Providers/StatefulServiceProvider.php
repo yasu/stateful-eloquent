@@ -29,10 +29,24 @@ class StatefulServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['events']->listen('eloquent.creating*', function ($model) {
-            if ($model instanceof Stateful) {
-                $model->setInitialState();
+        $this->app['events']->listen('eloquent.creating*', function ($operation, $models) {
+            $modelClass = $this->getModelClass($operation);
+            if (is_a($modelClass,Stateful::class, true)) {
+                foreach ($models as $model) {
+                    $model->setInitialState();
+                }
             }
         });
+    }
+
+    /**
+     * Get model class.
+     *
+     * @param $model
+     * @return mixed
+     */
+    private function getModelClass($model)
+    {
+        return explode(": ", $model)[1];
     }
 }
