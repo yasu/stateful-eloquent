@@ -53,7 +53,7 @@ trait StatefulTrait
     public function obtainTransitions()
     {
         if ($this->transitions != null) return $this->transitions;
-        throw new NotValidTransitionsException('No transitions defined for class ' , get_class($this) );
+        throw new NotValidTransitionsException('No transitions defined for class ' . get_class($this) );
     }
 
     /**
@@ -64,7 +64,7 @@ trait StatefulTrait
     public function obtainStates()
     {
         if ($this->states != null) return $this->states;
-        throw new NotValidStatesException('No states defined for class ' , get_class($this) );
+        throw new NotValidStatesException('No states defined for class ' . get_class($this) );
     }
 
     /**
