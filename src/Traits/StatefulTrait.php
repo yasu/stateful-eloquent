@@ -4,6 +4,7 @@ namespace Acacha\Stateful\Traits;
 use Acacha\Stateful\Events\Registered;
 use Acacha\Stateful\Events\Transitioned;
 use Acacha\Stateful\Exceptions\IllegalStateTransitionException;
+use Acacha\Stateful\Exceptions\NotValidTransitionsException;
 use Illuminate\Support\MessageBag;
 
 /**
@@ -44,6 +45,17 @@ trait StatefulTrait
     }
 
     /**
+     * Obtain transitions.
+     *
+     * @return mixed
+     */
+    public function obtainTransitions()
+    {
+        if ($this->transitions != null) return $this->transitions;
+        throw new NotValidTransitionsException('No transitions defined for class ' , get_class($this) );
+    }
+
+    /**
      * Overload methods.
      * 
      * @param $method
@@ -52,7 +64,7 @@ trait StatefulTrait
      */
     public function __call($method, $parameters)
     {
-        if (array_key_exists($method, $this->transitions)) {
+        if (array_key_exists($method, $this->obtainTransitions())) {
             return $this->performTransition($method);
         } elseif (array_key_exists($method, $this->states) || in_array($method, $this->states)) {
             return $this->isState($method);
@@ -81,7 +93,7 @@ trait StatefulTrait
      */
     private function performTransition($transition)
     {
-        $to = $this->transitions[$transition]['to'];
+        $to = $this->obtainTransitions()[$transition]['to'];
 
         if ($this->canPerformTransition($transition)) {
             $this->executeBeforeTransitionHook($transition);
@@ -145,7 +157,7 @@ trait StatefulTrait
      */
     protected function canPerformTransition($transition)
     {
-        $from = $this->transitions[$transition]['from'];
+        $from = $this->obtainTransitions()[$transition]['from'];
         $currentState = $this->{$this->getStateColumn()};
 
         if(method_exists($this, $method = 'validate' . studly_case($transition) ))
