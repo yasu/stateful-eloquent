@@ -16,7 +16,7 @@ class Transaction extends Model implements Stateful
      * @var array
      */
     protected $states = [
-        'draft' => ['inital' => true],
+        'draft' => ['initial' => true],
         'processing',
         'errored',
         'active',

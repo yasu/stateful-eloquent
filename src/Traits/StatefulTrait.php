@@ -213,14 +213,14 @@ trait StatefulTrait
     }
 
     /**
-     * Get the inital state.
+     * Get the initial state.
      * 
      * @return bool|int|string
      */
     public function getInitialState()
     {
         foreach ($this->obtainStates() as $state => $value) {
-            if ($value['inital']) {
+            if ($value['initial']) {
                return $state;
             }
         }

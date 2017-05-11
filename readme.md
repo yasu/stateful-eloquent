@@ -45,7 +45,7 @@ Your models should have an array name `$states` that define your model states.
  * @var array
  */
 protected $states = [
-    'draft' => ['inital' => true],
+    'draft' => ['initial' => true],
     'processing',
     'errored',
     'active',
