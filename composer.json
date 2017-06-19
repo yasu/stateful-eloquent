@@ -1,8 +1,8 @@
 {
-    "name": "acacha/stateful-eloquent",
+    "name": "yasu/stateful-eloquent",
     "description": "State machines for Eloquent classes",
     "license": "MIT",
-    "homepage": "https://github.com/mikerice/stateful-eloquent",
+    "homepage": "https://github.com/yasu/stateful-eloquent",
     "keywords": [
         "laravel",
         "eloquent",
@@ -16,16 +16,20 @@
         {
             "name": "Sergi Tur Badenas",
             "email": "sergiturbadenas@gmail.com"
+        },
+        {
+            "name": "Yasuhiro Manai",
+            "email": "yasuhiro.manai@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Acacha\\Stateful\\": "src/"
+            "Yasu\\Stateful\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Acacha\\Stateful\\Tests\\": "tests"
+            "Yasu\\Stateful\\Tests\\": "tests"
         }
     },
     "require": {

@@ -11,7 +11,7 @@ Forked from https://github.com/mikerice/stateful-eloquent
 ### Step 1: Install Through Composer
 
 ```
-composer require acacha/stateful-eloquent
+composer require yasu/stateful-eloquent
 ```
 
 ### Step 2: Add the Service Provider
@@ -165,4 +165,3 @@ $transaction->process();
 //Check if a state is active (return true or false)
 $transaction->active();
 ```
-
