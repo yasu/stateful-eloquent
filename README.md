@@ -17,7 +17,7 @@ composer require yasu/stateful-eloquent
 ### Step 2: Add the Service Provider
 
 ```php
-Acacha\Stateful\Providers\StatefulServiceProvider::class,
+Yasu\Stateful\Providers\StatefulServiceProvider::class,
 ```
 
 ### Step 3: Update your Eloquent Model
@@ -25,8 +25,8 @@ Acacha\Stateful\Providers\StatefulServiceProvider::class,
 Your models should use the Stateful trait and interface
 
 ```php
-use Acacha\Stateful\Traits\StatefulTrait;
-use Acacha\Stateful\Contracts\Stateful;
+use Yasu\Stateful\Traits\StatefulTrait;
+use Yasu\Stateful\Contracts\Stateful;
 
 class Transaction extends Model implements Stateful
 {

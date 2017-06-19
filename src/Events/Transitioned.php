@@ -1,13 +1,13 @@
 <?php
 
-namespace Acacha\Stateful\Events;
+namespace Yasu\Stateful\Events;
 
-use Acacha\Stateful\Contracts\Stateful;
+use Yasu\Stateful\Contracts\Stateful;
 
 /**
  * Event Registered. 
  * 
- * @package Acacha\Stateful\Events
+ * @package Yasu\Stateful\Events
  */
 class Transitioned
 {

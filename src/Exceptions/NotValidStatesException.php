@@ -1,11 +1,11 @@
 <?php
 
-namespace Acacha\Stateful\Exceptions;
+namespace Yasu\Stateful\Exceptions;
 
 /**
  * Class NotValidStatesException.
  * 
- * @package Acacha\Stateful\Exceptions
+ * @package Yasu\Stateful\Exceptions
  */
 class NotValidStatesException extends \LogicException
 {

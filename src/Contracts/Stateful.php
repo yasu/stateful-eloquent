@@ -1,6 +1,6 @@
 <?php
 
-namespace Acacha\Stateful\Contracts;
+namespace Yasu\Stateful\Contracts;
 
 /**
  * Interface Stateful

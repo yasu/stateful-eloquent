@@ -1,14 +1,14 @@
 <?php
 
-namespace Acacha\Stateful\Providers;
+namespace Yasu\Stateful\Providers;
 
-use Acacha\Stateful\Contracts\Stateful;
+use Yasu\Stateful\Contracts\Stateful;
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class StatefulServiceProvider.
  * 
- * @package Acacha\Stateful\Providers
+ * @package Yasu\Stateful\Providers
  */
 class StatefulServiceProvider extends ServiceProvider
 {
