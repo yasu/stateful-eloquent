@@ -1,17 +1,17 @@
 <?php
 
-namespace Acacha\Stateful\Traits;
-use Acacha\Stateful\Events\Registered;
-use Acacha\Stateful\Events\Transitioned;
-use Acacha\Stateful\Exceptions\IllegalStateTransitionException;
-use Acacha\Stateful\Exceptions\NotValidStatesException;
-use Acacha\Stateful\Exceptions\NotValidTransitionsException;
+namespace Yasu\Stateful\Traits;
+use Yasu\Stateful\Events\Registered;
+use Yasu\Stateful\Events\Transitioned;
+use Yasu\Stateful\Exceptions\IllegalStateTransitionException;
+use Yasu\Stateful\Exceptions\NotValidStatesException;
+use Yasu\Stateful\Exceptions\NotValidTransitionsException;
 use Illuminate\Support\MessageBag;
 
 /**
  * Class StatefulTrait.
  *
- * @package Acacha\Stateful
+ * @package Yasu\Stateful
  */
 trait StatefulTrait
 {

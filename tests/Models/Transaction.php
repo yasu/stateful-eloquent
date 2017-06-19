@@ -1,9 +1,9 @@
 <?php
 
-namespace Acacha\Stateful\Tests\Models;
+namespace Yasu\Stateful\Tests\Models;
 
-use Acacha\Stateful\Traits\StatefulTrait;
-use Acacha\Stateful\Contracts\Stateful;
+use Yasu\Stateful\Traits\StatefulTrait;
+use Yasu\Stateful\Contracts\Stateful;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model implements Stateful

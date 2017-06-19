@@ -1,13 +1,13 @@
 <?php
 
-namespace Acacha\Stateful\Exceptions;
+namespace Yasu\Stateful\Exceptions;
 
 use Illuminate\Support\MessageBag;
 
 /**
  * Class IllegalStateTransitionException.
  * 
- * @package Acacha\Stateful\Exceptions
+ * @package Yasu\Stateful\Exceptions
  */
 class IllegalStateTransitionException extends \LogicException
 {
